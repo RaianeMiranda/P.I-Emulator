@@ -29,7 +29,7 @@ export function MyDrawer() {
                 drawerStyle: {
                     width: 250,
                     height: 700,
-                    marginTop: "60px",
+                    marginTop: 60,
                 },
                 drawerPosition: "right",
                 headerRight: () => {

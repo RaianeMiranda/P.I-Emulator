@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { MyDrawer } from './src/navigation';
+import { MyDrawer } from './navigation/index';
 import { Provider } from 'react-native-paper';
 
 export default function App() {
