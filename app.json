@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "P.I-Emulator",
-    "slug": "P.I-Emulator",
+    "slug": "PIEmulator",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
