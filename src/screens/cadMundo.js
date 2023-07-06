@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { actions, RichEditor, RichToolbar } from "react-native-pell-rich-editor";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
-import { Button, Paragraph, Text, TextInput } from "react-native-paper";
+import { colors, locations, styles } from "../config/styles";
+import { Paragraph, Text, TextInput } from "react-native-paper";
+import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import 'firebase/firestore';
+import { database, auth } from "../config/firebase/firebase";
 import { useEffect } from "react";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { Modal, Touchable } from "react-native";
-import { auth, database } from "../config/firebase/firebase";
-import { colors, locations, styles } from "../config/styles";
-import { Platform, KeyboardAvoidingView, SafeAreaView, ScrollView, View } from "react-native";
-import { actions, RichEditor, RichToolbar } from "react-native-pell-rich-editor";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Modal } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { KeyboardAvoidingView } from "react-native";
 
 export default function CadMundo({ route, navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -40,7 +41,7 @@ export default function CadMundo({ route, navigation }) {
             console.log("Mundo adicionado com ID: ", docRef.id);
 
         } catch (error) {
-            console.error("Erro ao adicionar mundo: ", error.message);
+            console.error("Erro ao adicionar Mundo: ", error.message);
         }
     };
 
@@ -51,7 +52,7 @@ export default function CadMundo({ route, navigation }) {
 
         const fetchPreviousContent = async () => {
             try {
-                const docRef = doc(database, "mundo", "sFU8hOItb11B3dRRDs9i");
+                const docRef = doc(database, "mundo", "YfOELQ4woOB7D8jIuUl0");
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     setDescricao(docSnap.data().descricao);
@@ -63,15 +64,12 @@ export default function CadMundo({ route, navigation }) {
 
         fetchPreviousContent();
 
-        setNomeMundo("");
-        setDescricao("");
-
     }, [bookId, route.params.bookId]);
 
     return (
         <ScrollView>
-            <SafeAreaProvider style={styles.containercriacaoper}>
-
+        <SafeAreaProvider style={styles.containercriacaoper}>
+            <View style={{ flex: 1 }}>
                 <View style={{ flexBasis: "10%" }}>
                     <LinearGradient
                         // Background Linear Gradient 
@@ -154,7 +152,7 @@ export default function CadMundo({ route, navigation }) {
                     <View
                         style={{
                             height: 7,
-                            backgroundColor: '#D5ECB6',
+                            backgroundColor: '#EBDEF0',
                             marginBottom: 10 //opcional
                         }}
                     />
@@ -165,8 +163,7 @@ export default function CadMundo({ route, navigation }) {
                             actions.insertOrderedList, actions.checkboxList, actions.insertLink]}
                             iconMap={{ [actions.heading1]: handleHead }}
                         />
-                       
-                            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }}>
+                            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
                                 <RichEditor
                                     ref={richText}
                                     onChangeText={text => setDescricao(text)}
@@ -175,18 +172,22 @@ export default function CadMundo({ route, navigation }) {
                                 />
                             </KeyboardAvoidingView>
 
+
+
+
                     </SafeAreaView>
+
 
                 </View>
                 <View
                     style={{
                         flexBasis: "20%"
                     }}
-                >
+                    >
                     <View style={styles.containersalvarper}>
 
                         <TouchableOpacity style={{
-                            backgroundColor: "#D5ECB6",
+                            backgroundColor: "#EBDEF0",
                             margin: 30,
                             minWidth: 80,
                             alignItems: "center",
@@ -196,25 +197,24 @@ export default function CadMundo({ route, navigation }) {
                             borderRadius: 1,
                             padding: 5,
                         }}
-                            mode="contained"
+                        mode="contained"
                             onPress={handleSalvar}>
-                            <Text style={{ color: "black", fontSize: 15 }}>Salvar</Text>
+                            <Text style={{ color: "black", fontSize: 18 }}>Salvar</Text>
                         </TouchableOpacity>
 
                     </View>
-                    <View>
-                        <LinearGradient
-                            // Background Linear Gradient 
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                            colors={colors}
-                            locations={locations}
-                            style={{ height: 7, width: "100%" }}
-                        />
-                    </View>
-                </View>
 
-            </SafeAreaProvider >
-        </ScrollView>
+                    <LinearGradient
+                        // Background Linear Gradient 
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        colors={colors}
+                        locations={locations}
+                        style={{ height: 7, width: "100%" }}
+                        />
+                </View>
+            </View>
+        </SafeAreaProvider >
+                        </ScrollView>
     );
 }
