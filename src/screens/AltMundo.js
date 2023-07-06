@@ -73,101 +73,102 @@ export default function AltMundo({ route, navigation }) {
 
 
     return (
-        <SafeAreaProvider style={styles.containercriacaoper}>
-            <View style={{ flex: 1 }}>
-                <View style={{ flexBasis: "10%" }}>
-                    <LinearGradient
-                        // Background Linear Gradient 
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 1, y: 0 }}
-                        colors={colors}
-                        locations={locations}
-                        style={{ height: 7, width: "100%" }}
-                    />
-                    <View style={styles.containermodal}>
-                        <View style={styles.containernomeper}>
-                            <Paragraph style={styles.paragraphper}>
-                                Nome do Mundo:
-                                <TextInput
-                                    style={styles.inputper}
-                                    value={nomeMundo}
-                                    onChangeText={text => setNomeMundo(text)}
-                                />
-                            </Paragraph>
-                        </View>
-                        <View style={styles.centeredView}>
-                            <Modal
-                                animationType="none"
-                                transparent={true}
-                                visible={modalVisible}
-                                onRequestClose={() => {
-                                    Alert.alert('Modal has been closed.');
-                                    setModalVisible(!modalVisible);
-                                }}>
-                                <View style={styles.centeredView}>
-                                    <View style={styles.modalView}>
-                                        <Icon name="close"
-                                            style={styles.buttonclose}
-                                            onPress={() => setModalVisible(!modalVisible)}
+        <ScrollView >
+            <SafeAreaProvider style={styles.containercriacaoper}>
+                <View style={{ flex: 1 }}>
+                    <View style={{ flexBasis: "10%" }}>
+                        <LinearGradient
+                            // Background Linear Gradient 
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                            colors={colors}
+                            locations={locations}
+                            style={{ height: 7, width: "100%" }}
+                        />
+                        <View style={styles.containermodal}>
+                            <View style={styles.containernomeper}>
+                                <Paragraph style={styles.paragraphper}>
+                                    Nome do Mundo:
+                                    <TextInput
+                                        style={styles.inputper}
+                                        value={nomeMundo}
+                                        onChangeText={text => setNomeMundo(text)}
+                                    />
+                                </Paragraph>
+                            </View>
+                            <View style={styles.centeredView}>
+                                <Modal
+                                    animationType="none"
+                                    transparent={true}
+                                    visible={modalVisible}
+                                    onRequestClose={() => {
+                                        Alert.alert('Modal has been closed.');
+                                        setModalVisible(!modalVisible);
+                                    }}>
+                                    <View style={styles.centeredView}>
+                                        <View style={styles.modalView}>
+                                            <Icon name="close"
+                                                style={styles.buttonclose}
+                                                onPress={() => setModalVisible(!modalVisible)}
 
-                                        />
+                                            />
 
-                                        <Text style={styles.modalText}>O primeiro passo é pequeno, mas não tão simples.
-                                            Você deve escrever uma frase que resuma toda a história do seu livro.
-                                            Recomendamos fazer uma frase com menos de 15 palavras que aborda as principais questões da estória sem citar nomes de personagens.
-                                        </Text>
-                                        <Text style={styles.modalText2}>
-                                            O resultado deve ficar mais ou menos assim:
-                                        </Text>
-                                        <Text style={styles.modalText3}>
-                                            “Um cientista excêntrico viaja no tempo para matar Hitler.”
-                                        </Text>
-                                        <Text>
-                                            Como você pode observar, descrevemos o protagonista em vez de citar seu nome.
-                                            Mencionar Hitler não tem problema, pois ele é uma figura histórica.
-                                            Não se preocupe em alcançar a perfeição. O objetivo de cada etapa é justamente desenvolver e aperfeiçoar o seu enredo aos poucos.
-                                        </Text>
-                                        <Text style={styles.modalText4}>
-                                            Aqui há outros exemplos para se inspirar:
-                                        </Text>
-                                        <Text style={styles.modalText5}>
-                                            “Garoto órfão descobre que é um bruxo famoso e é levado para uma escola de magia” (Harry Potter e a Pedra filosofal)
-                                        </Text>
-                                        <Text style={styles.modalText6}>
-                                            “Estudante adolescente descobre que o garoto que ela está interessada é um vampiro” (Crepúsculo)</Text>
+                                            <Text style={styles.modalText}>O primeiro passo é pequeno, mas não tão simples.
+                                                Você deve escrever uma frase que resuma toda a história do seu livro.
+                                                Recomendamos fazer uma frase com menos de 15 palavras que aborda as principais questões da estória sem citar nomes de personagens.
+                                            </Text>
+                                            <Text style={styles.modalText2}>
+                                                O resultado deve ficar mais ou menos assim:
+                                            </Text>
+                                            <Text style={styles.modalText3}>
+                                                “Um cientista excêntrico viaja no tempo para matar Hitler.”
+                                            </Text>
+                                            <Text>
+                                                Como você pode observar, descrevemos o protagonista em vez de citar seu nome.
+                                                Mencionar Hitler não tem problema, pois ele é uma figura histórica.
+                                                Não se preocupe em alcançar a perfeição. O objetivo de cada etapa é justamente desenvolver e aperfeiçoar o seu enredo aos poucos.
+                                            </Text>
+                                            <Text style={styles.modalText4}>
+                                                Aqui há outros exemplos para se inspirar:
+                                            </Text>
+                                            <Text style={styles.modalText5}>
+                                                “Garoto órfão descobre que é um bruxo famoso e é levado para uma escola de magia” (Harry Potter e a Pedra filosofal)
+                                            </Text>
+                                            <Text style={styles.modalText6}>
+                                                “Estudante adolescente descobre que o garoto que ela está interessada é um vampiro” (Crepúsculo)</Text>
+                                        </View>
                                     </View>
-                                </View>
-                            </Modal>
+                                </Modal>
 
-                            <Icon name="information-outline" style={styles.iconinfo}
-                                onPress={() => setModalVisible(true)} />
+                                <Icon name="information-outline" style={styles.iconinfo}
+                                    onPress={() => setModalVisible(true)} />
 
+                            </View>
                         </View>
                     </View>
-                </View>
-                <View style={
-                    {
-                        // maxWidth: 300,
-                        flexBasis: "75%",
+                    <View style={
+                        {
+                            // maxWidth: 300,
+                            flexBasis: "75%",
+                        }
                     }
-                }
-                >
-                    <View
-                        style={{
-                            height: 7,
-                            backgroundColor: '#D5ECB6',
-                            marginBottom: 10 //opcional
-                        }}
-                    />
-
-                    <SafeAreaView>
-                        <RichToolbar
-                            editor={richText}
-                            actions={[actions.setBold, actions.setItalic, actions.setUnderline, actions.heading1, actions.insertBulletsList,
-                            actions.insertOrderedList, actions.checkboxList, actions.insertLink]}
-                            iconMap={{ [actions.heading1]: handleHead }}
+                    >
+                        <View
+                            style={{
+                                height: 7,
+                                backgroundColor: '#D5ECB6',
+                                marginBottom: 10 //opcional
+                            }}
                         />
-                        <ScrollView>
+
+                        <SafeAreaView>
+                            <RichToolbar
+                                editor={richText}
+                                actions={[actions.setBold, actions.setItalic, actions.setUnderline, actions.heading1, actions.insertBulletsList,
+                                actions.insertOrderedList, actions.checkboxList, actions.insertLink]}
+                                iconMap={{ [actions.heading1]: handleHead }}
+                            />
+
                             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }}>
                                 <RichEditor
                                     ref={richText}
@@ -176,48 +177,49 @@ export default function AltMundo({ route, navigation }) {
                                     initialHeight={300}
                                 />
                             </KeyboardAvoidingView>
-                        </ScrollView>
-                    </SafeAreaView>
-                </View>
-                <View
-                    style={{
-                        flexBasis: "20%"
-                    }}
-                >
-                    <View style={styles.containersalvar2button}>
-                        <TouchableOpacity style={styles.buttondeletar} mode="contained" onPress={() => handleExcluir(mundoId)}>
-                        <Text style={{ color: "black", fontSize: 15 }}>Deletar</Text>
-                        </TouchableOpacity>
-                             <TouchableOpacity style={{
-                            backgroundColor: "#EBDEF0",
-                            margin: 30,
-                            minWidth: 80,
-                            alignItems: "center",
-                            borderWidth: 3,
-                            borderColor: "#D9D9D9",
-                            borderStyle: "solid",
-                            borderRadius: 1,
-                            padding: 5,
+
+                        </SafeAreaView>
+                    </View>
+                    <View
+                        style={{
+                            flexBasis: "20%"
                         }}
-                            mode="contained"
-                            onPress={handleUpdate}>
-                            <Text style={{ color: "black", fontSize: 15 }}>Salvar</Text>
-                        </TouchableOpacity>
+                    >
+                        <View style={styles.containersalvar2button}>
+                            <TouchableOpacity style={styles.buttondeletar} mode="contained" onPress={() => handleExcluir(mundoId)}>
+                                <Text style={{ color: "black", fontSize: 15 }}>Deletar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{
+                                backgroundColor: "#EBDEF0",
+                                margin: 30,
+                                minWidth: 80,
+                                alignItems: "center",
+                                borderWidth: 3,
+                                borderColor: "#D9D9D9",
+                                borderStyle: "solid",
+                                borderRadius: 1,
+                                padding: 5,
+                            }}
+                                mode="contained"
+                                onPress={handleUpdate}>
+                                <Text style={{ color: "black", fontSize: 15 }}>Salvar</Text>
+                            </TouchableOpacity>
+                        </View>
+
                     </View>
 
+                    <View>
+                        <LinearGradient
+                            // Background Linear Gradient 
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                            colors={colors}
+                            locations={locations}
+                            style={{ height: 7, width: "100%" }}
+                        />
+                    </View>
                 </View>
-
-                <View>
-                    <LinearGradient
-                        // Background Linear Gradient 
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 1, y: 0 }}
-                        colors={colors}
-                        locations={locations}
-                        style={{ height: 7, width: "100%" }}
-                    />
-                </View>
-            </View>
-        </SafeAreaProvider>
+            </SafeAreaProvider>
+        </ScrollView >
     );
 }
