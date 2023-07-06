@@ -1,10 +1,11 @@
+import { LinearGradient } from "expo-linear-gradient";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { TouchableOpacity, Text, View, Image } from "react-native";
-import { Button, HelperText, TextInput } from "react-native-paper";
+import { Button, HelperText, Paragraph, TextInput, } from "react-native-paper";
 import { auth } from "../config/firebase/firebase";
-import { styles } from "../config/styles";
-import { onAuthStateChanged } from "firebase/auth";
+import { colors, locations, styles } from "../config/styles";
+
 
 export const LoginScreen = ({ route, navigation }) => {
 
@@ -19,14 +20,6 @@ export const LoginScreen = ({ route, navigation }) => {
   const [mostraErro, setMostraErro] = useState("");
   const { mensagem } = route.params || false;
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigation.navigate("Biblioteca");
-      }
-    });
-  }, [])
-
   function onLoginPressed() {
     console.log("LoginIniciado");
     if (email.value === "" || password.value === "") {
@@ -39,9 +32,7 @@ export const LoginScreen = ({ route, navigation }) => {
         const user = userCredential.user;
         navigation.navigate("Biblioteca");
       })
-      .catch((error) => {
-        lidarComErro(error.code);
-      });
+
   }
 
   function lidarComErro(erro) {
@@ -66,51 +57,107 @@ export const LoginScreen = ({ route, navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
-      {mensagem && <HelperText type="info">{mensagem}</HelperText>}
-      <HelperText type="error">{mostraErro}</HelperText>
-      <TextInput
-        testID="Email"
-        label="Digite seu E-mail"
-        value={email.value}
-        onChangeText={(text) => setEmail({ value: text, error: "" })}
-        error={!!email.error}
-        errorText={email.error}
-        style={styles.input}
-        /* não essenciais  */
-        returnKeyType="next"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-      />
-      <HelperText visible={!!email.error}>{email.error}</HelperText>
-      <TextInput
-        testID="Senha"
-        label="Senha"
-        returnKeyType="done"
-        value={password.value}
-        onChangeText={(text) => setPassword({ value: text, error: "" })}
-        error={!!password.error}
-        errorText={password.error}
-        secureTextEntry
-        style={styles.input}
-      />
-      <View style={styles.esqueceuSenha}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("")}
-        >
-          <Text style={styles.label}>Esqueceu sua senha?</Text>
-        </TouchableOpacity>
+    <View style={{ backgroundColor: "#FFF2D8" }} >
+      <View>
+        <LinearGradient
+          // Background Linear Gradient 
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={colors}
+          locations={locations}
+          style={{ height: 7, width: "100%", marginTop: 20, marginBottom: 20 }}
+        />
       </View>
-      <Button mode="contained" onPress={onLoginPressed}>
-        Login
-      </Button>
-      <View style={styles.row}>
-        <Text style={styles.label}>Não possui uma conta? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
-          <Text style={styles.link}>Cadastrar</Text>
+      <View style={styles.containerlogin1}>
+        <Image style={styles.imagedocks}
+          source={require("../Images/logodocks.png")}
+        />
+        <Paragraph style={styles.paragraphbv}>Bem vindo(a) ao</Paragraph>
+        <Paragraph style={styles.paragraphbv1}>Docks</Paragraph>
+        <Text style={styles.textbv}>Aqui é o lugar para as</Text>
+        <Text style={styles.textbv1}> suas histórias </Text>
+        <Text> {mensagem && <HelperText type="info">{mensagem}</HelperText>}</Text>
+   
+        <TextInput
+          mode="outlined"
+          underlineColor="#EDEDED"
+          outlineColor="#EDEDED"
+          activeOutlineColor="grey"
+          label="E-mail"
+          value={email.value}
+          onChangeText={(text) => setEmail({ value: text, error: "" })}
+          error={!!email.error}
+          errorText={email.error}
+          style={styles.textinput_email}
+          /* não essenciais<3 */
+          returnKeyType="next"
+          autoCompleteType="email"
+          textContentType="emailAddress"
+          keyboardAppearance="email-address"
+        />
+        <TextInput
+          mode="outlined"
+          underlineColor="#EDEDED"
+          outlineColor="#EDEDED"
+          activeOutlineColor="grey"
+          style={styles.textinput_senha}
+          secureTextEntry
+          label="Senha"
+          value={password.value}
+          error={!!password.error}
+          errorText={password.error}
+          onChangeText={(text) => setPassword({ value: text, error: "" })}
+        />
+        <TouchableOpacity style={styles.buttoncontinuar1} mode="contained" onPress={onLoginPressed} >
+          <Text style={styles.text_cont}>Continuar</Text>
         </TouchableOpacity>
+        
+        <Text style={styles.text_ou}>OU</Text>
+
+        <TouchableOpacity style={styles.buttoncadface1}>
+          <View style={styles.imagetextface}>
+            <Image style={styles.imageface}
+              source={require("../Images/facedocks.png")} />
+            <View style={{ display: "flex", flexDirection: "column" }}>
+              <Text style={styles.textcadface}>Continuar com o </Text>
+              <Text style={styles.textcadface2}> Facebook </Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+
+        <View>
+          <TouchableOpacity style={styles.buttoncadgoogle} mode="contained">
+            <View style={styles.imagetextgoogle}>
+              <Image style={styles.imagegoogle}
+                source={require("../Images/icongoogle.png")} />
+              <View style={{ display: "flex", flexDirection: "column" }}>
+                <Text style={styles.textcadface}>Continuar com o </Text>
+                <Text style={styles.textcadface2}>Google </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.row}>
+               <HelperText type="error">{lidarComErro}</HelperText>
+          <Text style={styles.label}>Não possui uma conta? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Cadastro")}>
+            <Text style={styles.link}>Cadastrar</Text>
+          </TouchableOpacity>
+        </View>
+
+      </View>
+      <View style={{ backgroundColor: "#FFF2D8" }} >
+        <LinearGradient
+          // Background Linear Gradient 
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={colors}
+          locations={locations}
+          style={{ height: 7, width: "100%", marginTop: 20, marginBottom: 20 }}
+        />
       </View>
     </View>
+
   );
 };
