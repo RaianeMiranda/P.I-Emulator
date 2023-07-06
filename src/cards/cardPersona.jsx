@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     bodyFirst: {
         color: "black",
         fontSize: 14,
-        fontWeight: "bolder",
+        fontWeight: "bold",
         paddingLeft: 20,
         paddingLeft: 20,
         paddingRight: 20,
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     body: {
         color: "black",
         fontSize: 14,
-        fontWeight: "bolder",
+        fontWeight: "bold",
         paddingLeft: 15,
         paddingLeft: 20,
         paddingRight: 15,

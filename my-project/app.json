@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "P.I-Emulator",
-    "slug": "PIEmulator",
+    "name": "my-project",
+    "slug": "my-project",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,23 +15,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "PIEmulator"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.raiane_miranda.PIEmulator"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "ed014f38-edfe-4aec-8abd-ec90c61d0d34"
-      }
     }
   }
 }

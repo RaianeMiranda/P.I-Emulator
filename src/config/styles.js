@@ -53,124 +53,127 @@ export const styles = StyleSheet.create({
   viewcardper: {
     marginBottom: 30
   },
-  //=======================================================================================================
+  ///=======================================================================================================
   //LOGIN
   textinput_email: {
     width: 240,
     height: 40,
-    borderRadius: 10,
     backgroundColor: "white",
-    // margin: "auto",
+    alignSelf: "center",
     marginBottom: 10
   },
-  textinput_email1: {
-    width: 240,
-    height: 40,
-    borderRadius: 10,
-    backgroundColor: "white",
-    // margin: "auto",
-    marginBottom: 3
-  },
+
   textinput_senha: {
     width: 240,
     height: 40,
-    borderRadius: 10,
     backgroundColor: "white",
-    // margin: "auto",
+    alignSelf: "center",
     marginBottom: 10,
   },
   containerlogin1: {
     backgroundColor: "white",
-    paddingRight: 40,
-    paddingLeft: 40,
-    paddingTop: 40,
-    paddingBottom: 60,
-    borderRadius: 35,
+    marginRight: 30,
+    marginLeft: 30,
+    borderRadius: 45,
+    height: 620,
+  },
+  containerCad: {
+    backgroundColor: "white",
+    marginRight: 30,
+    marginLeft: 30,
+    borderRadius: 45,
+    height: 650,
   },
   containerlogin: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 26,
-    flex: 1,
     backgroundColor: "#FFF2D8",
-    margin: 25,
+    height: "100%",
     justifyContent: "center",
-    fontFamily: "Open Sans",
   },
   buttoncontinuar1: {
     marginTop: 7,
     backgroundColor: "#F6EB60",
     borderRadius: 10,
     width: 140,
-    // margin: "auto",
+    height: 40,
+    alignSelf: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: 10
   },
   buttoncadgoogle1: {
     backgroundColor: "transparent",
     borderRadius: 5,
-    border: '5px solid #EDEDED',
+    borderWidth: 5,
+    borderStyle: 'solid',
+    borderColor: '#EDEDED',
     height: 60,
     width: 250,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    // margin: "auto",
+    alignSelf: "center",
     marginTop: 5,
   },
   buttoncadface1: {
-    backgroundColor: "transparent",
     borderRadius: 15,
-    border: '1px solid #EDEDED',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#EDEDED',
     height: 60,
     width: 200,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    // margin: "auto",
+    alignSelf: "center",
     marginBottom: 5,
     marginTop: 5,
   },
   imagetextgoogle: {
     display: "flex",
     flexDirection: "row",
-    // margin: " auto"
+    margin: 0
   },
   imagetextface: {
     display: "flex",
     flexDirection: "row",
-    margin: "auto"
+    margin: 0
 
   },
   imagedocks: {
     width: 80,
     height: 80,
-    // margin: "auto",
+    margin: 20,
+    marginTop: 20,
+    alignSelf: "center",
   },
   paragraphbv: {
     fontWeight: "bold",
-    // margin: "auto",
+    alignSelf: "center",
     fontSize: 23,
 
   },
   paragraphbv1: {
     fontWeight: "bold",
-    // margin: "auto",
-    marginTop: 0,
+    alignSelf: "center",
     fontSize: 23,
   },
   textbv: {
-    // margin: "auto",
+    alignSelf: "center",
   },
   textbv1: {
-    // margin: "auto",
-    marginTop: 0,
+    alignSelf: "center",
+    margin: 0
   },
   text_cont: {
-    color: "black"
+    color: "black",
+    fontWeight: 500,
   },
   text_ou: {
-    marginLeft: 110
+    alignSelf: "center",
   },
   imageface: {
     width: 30,
@@ -180,26 +183,26 @@ export const styles = StyleSheet.create({
   },
   textcadface: {
     color: "black",
-    fontFamily: "Open Sans, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
     fontSize: 13,
     marginLeft: 12,
   },
   textcadface2: {
     color: "black",
-    fontFamily: "Open Sans, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
-    // margin: " auto",
+    alignSelf: "center",
     fontSize: 13,
   },
   buttoncadgoogle: {
     backgroundColor: "transparent",
     borderRadius: 15,
-    border: '1px solid #EDEDED',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#EDEDED',
     height: 60,
     width: 200,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    // margin: "auto",
+    alignSelf: "center",
   },
   imagegoogle: {
     width: 32,
@@ -210,6 +213,7 @@ export const styles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
+    alignSelf: "center",
     marginTop: 15,
     marginLeft: 17
   },
@@ -220,16 +224,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
   },
-  //====================================================================================================
 
-  //Cad PERSONAGEM
-  containersalvarEtapa: {
-    marginBottom: 20,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    marginTop: 20,
-  },
   //====================================================================================================
   //DRAWER
   drawerFotoDocks: {
@@ -248,9 +243,9 @@ export const styles = StyleSheet.create({
   buttonSalvarEtapa: {
     backgroundColor: "#F4CCC8",
     margin: 10,
-    width: "auto",
+    width: 0,
     padding: 0,
-    height: "auto",
+    height: 0,
     alignItems: "center",
     borderWidth: 3,
     borderColor: "#D9D9D9",
@@ -299,11 +294,13 @@ export const styles = StyleSheet.create({
 
   container: {
     backgroundColor: "#FFF2D8",
+    height: "100%",
 
   },
 
   containerBiblio: {
     backgroundColor: "#FFF2D8",
+    height: "100%",
   },
 
   buttonCL: {
@@ -335,6 +332,7 @@ export const styles = StyleSheet.create({
   //CadMundo
   containercriacaoper: {
     backgroundColor: "#FFF2D8",
+    height: "100%",
   },
   containermodal: {
     display: "flex",
@@ -370,7 +368,7 @@ export const styles = StyleSheet.create({
   },
 
   modalView: {
-    margin: "auto",
+    alignSelf: "center",
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 15,
@@ -383,14 +381,16 @@ export const styles = StyleSheet.create({
   },
 
   buttonclose: {
-    fontSize: 24,
-    marginLeft: "auto",
+    fontSize: 28,
+    display: "flex",
+    marginLeft: 300,
+    justifyContent: "flex-end",
   },
 
 
 
   modalText2: {
-    marginRight: "auto",
+    marginRight: 0,
   },
   modalText3: {
     marginTop: 10,
@@ -398,7 +398,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   modalText4: {
-    marginRight: "auto",
+    marginRight: 0,
     marginBottom: 10,
     marginTop: 10,
   },
@@ -411,7 +411,7 @@ export const styles = StyleSheet.create({
   },
   iconinfo: {
     fontSize: 24,
-    marginLeft: "auto",
+    marginLeft: 0,
     marginTop: 15,
   },
   containermodal: {
@@ -457,9 +457,9 @@ export const styles = StyleSheet.create({
   buttonSalvarCap: {
     backgroundColor: "#F1C4A5",
     margin: 10,
-    width: "auto",
+    width: 0,
     padding: 0,
-    height: "auto",
+    height: 0,
     alignItems: "center",
     borderWidth: 3,
     borderColor: "#D9D9D9",
@@ -542,6 +542,168 @@ export const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20
   },
+
+  //INFORMATIVOS===================================================================================================================================================
+  pagdocks: {
+    fontWeight: "bold",
+    fontSize: 25,
+    marginLeft: 50,
+    marginTop: 28,
+  },
+
+  iconinfo: {
+    fontSize: 24,
+    marginTop: 15,
+  },
+
+  linear: {
+    maxWidth: 320,
+    alignSelf: "center",
+  },
+
+  pagPersona: {
+    fontWeight: "bold",
+    fontSize: 20,
+    marginLeft: 50,
+    marginTop: 28,
+  },
+  imagedocks_mao: {
+    width: 150,
+    height: 100,
+  },
+  imgcontainer: {
+    flex: 1,
+    alignSelf: "center",
+    display: "flex",
+    flexDirection: "row",
+    paddingTop: 20
+
+  },
+  mentor: {
+    width: 200,
+    height: 100,
+
+  },
+  logodocks: {
+    width: 200,
+    height: 200,
+  },
+  paty: {
+    width: 20,
+    height: 350,
+  },
+  psicopato: {
+    width: 90,
+    height: 150,
+    backgroundColor: "#FFF2D8",
+  },
+  textdocks: {
+    fontWeight: "bold",
+    fontSize: 30,
+    textAlign: "center",
+  },
+  containernome: {
+    marginBottom: 20,
+  },
+  textdocks2: {
+    fontSize: 15,
+    textAlign: "center",
+  },
+
+  textversion: {
+    fontWeight: "bold",
+    fontSize: 25,
+    marginTop: 15,
+    marginBottom: 5,
+    marginLeft: 50,
+  },
+
+  containersalvarEtapa: {
+    marginBottom: 20,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    marginTop: 20,
+  },
+
+  containernome: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  textmentor: {
+    fontWeight: "bold",
+    marginRight: 10,
+  },
+  textpaty: {
+    fontWeight: "bold",
+    marginRight: 10,
+  },
+  textdock_mao: {
+    fontWeight: "bold",
+    marginRight: 10,
+  },
+  textpsicopato: {
+    fontWeight: "bold",
+    marginRight: 10,
+  },
+  containercriadoras: {
+    fontWeight: "bold",
+    alignSelf: "center",
+    display: "flex",
+    fontSize: 25,
+    marginTop: 50,
+  },
+  containercriadoras2: {
+    backgroundColor: "white",
+    width: 330,
+    height: 300,
+    borderRadius: 20,
+    alignSelf: "center",
+    marginTop: 10,
+  },
+  containercriadoras3: {
+    fontWeight: "bold",
+    display: "flex",
+    alignSelf: "center",
+    justifyContent: "center",
+    marginTop: 15,
+  },
+  nomesdevs1: {
+    fontWeight: "bold",
+    marginBottom: 3,
+    fontSize: 15,
+    marginTop: 5,
+  },
+  nomesdevs: {
+    fontWeight: "bold",
+    marginBottom: 3,
+    fontSize: 15,
+  },
+  nomesfun: {
+    fontSize: 13,
+    marginBottom: 10,
+  },
+  containerfototext: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: 30,
+  },
+  containerfototext_: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: 30,
+    marginTop: 15,
+  },
+  nomesdevs1_: {
+    fontWeight: "bold",
+    marginBottom: 3,
+    fontSize: 15,
+    marginTop: 5,
+  },
+
 });
 
 

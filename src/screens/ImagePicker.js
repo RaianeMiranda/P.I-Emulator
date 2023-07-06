@@ -58,7 +58,7 @@ export default function ImagePickerFirebase ({ onImgURLChange }) {
       <TouchableOpacity onPress={handleButtonPress}>
         <Image
           source={require("../Images/botaoModal.png")}
-          style={{ width: 80, height: 100, marginTop: 30 }}
+          style={{ width: 80, height: 100, marginTop: 30, alignSelf: "center" }}
         />
       </TouchableOpacity>
     </View>

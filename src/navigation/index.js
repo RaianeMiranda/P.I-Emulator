@@ -7,32 +7,32 @@ import {
 } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import { LoginScreen } from "../screens/LoginScreen";
-// import { CadScreen } from "../screens/cadScreen";
+import { CadScreen } from "../screens/CadScreen";
 import { BiblioScreen } from "../screens/BiblioScreen";
 import cadMundo from "../screens/cadMundo";
 import { PaginaInicial } from "../screens/InicialScreen";
 import ModalCadLivros from "../screens/cadLivro";
-// import AltLivro from "../screens/AltLivro";
+import AltLivro from "../screens/AltLivro";
 import AltMundo from "../screens/AltMundo";
 // import { listMundo } from "../screens/listMundo";
-import cadPersona from "../screens/cadPersona";
+import CadPersona from "../screens/CadPersona";
 import Altpersonagens from "../screens/AltPersona";
 // import cadEtapaSnow from "../screens/cadEtapaSnow";
 import AltEtapasSnow from "../screens/AltEtapasSnow";
-import cadCapitulos from "../screens/cadCapitulo";
-import altCapitulos from "../screens/AltCapitulos";
-import listCapitulos from "../screens/ListCapitulos";
+import CadCapitulos from "../screens/cadCapitulo";
+import AltCapitulos from "../screens/AltCapitulos";
+import ListCapitulos from "../screens/ListCapitulos";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { styles } from "../config/styles";
 import { Image } from "react-native";
 import { auth, onAuthStateChanged } from "../config/firebase/firebase";
 import { useEffect, useState } from "react";
-// import { MundoScreen } from "../screens/MundoScreen";
-// import { PersonagemScreen } from "../screens/PersonagemScreen";
-// import { SnowflakeScreen } from "../screens/SnowflakeScreen";
-// import { SobreScreen } from "../screens/SobreScreen";
-// import { JornadaScreen } from "../screens/JornadaScreen";
-// import LogOutScreen from "../screens/logOutScreen";
+import { MundoScreen } from "../screens/MundoScreen";
+import { PersonagemScreen } from "../screens/PersonagemScreen";
+import { SnowflakeScreen } from "../screens/SnowflakeScreen";
+import { SobreScreen } from "../screens/SobreScreen";
+import { JornadaScreen } from "../screens/JornadaScreen";
+import LogOutScreen from "../screens/logOutScreen";
 // import { ConfigScreen } from "../screens/ConfigScreen";
 
 const Drawer = createDrawerNavigator();
@@ -130,7 +130,7 @@ export function MyDrawer() {
                 }}
             />
 
-            {/* <Drawer.Screen options={{
+            <Drawer.Screen options={{
                 headerTitleAlign: "center",
                 headerLeft: () => (
                     <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
@@ -146,9 +146,9 @@ export function MyDrawer() {
                 },
             }}
                 name="Jornada do Herói" component={JornadaScreen}
-            /> */}
+            />
 
-{/* 
+
             <Drawer.Screen options={{
                 headerTitleAlign: "center",
                 headerLeft: () => (
@@ -165,10 +165,10 @@ export function MyDrawer() {
                 },
             }}
                 name="Snowflake" component={SnowflakeScreen}
-            /> */}
+            />
 
 
-            {/* <Drawer.Screen options={{
+            <Drawer.Screen options={{
                 headerTitleAlign: "center",
                 headerLeft: () => (
                     <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
@@ -184,9 +184,9 @@ export function MyDrawer() {
                 },
             }}
                 name="Criação de Mundos" component={MundoScreen}
-            /> */}
+            />
 
-{/* 
+
             <Drawer.Screen options={{
                 headerTitleAlign: "center",
                 headerLeft: () => (
@@ -203,11 +203,10 @@ export function MyDrawer() {
                 },
             }}
                 name="Criação de Personagens" component={PersonagemScreen}
-            /> */}
+            />
 
 
-
-            {/* <Drawer.Screen options={{
+            <Drawer.Screen options={{
                 headerTitleAlign: "center",
                 headerLeft: () => (
                     <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
@@ -223,22 +222,23 @@ export function MyDrawer() {
                 },
             }} name="Sobre nós" component={SobreScreen}
             />
-            <Drawer.Screen options={{
-                headerTitleAlign: "center",
-                headerLeft: () => (
-                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
-                        <Image
-                            source={require("../Images/Voltar.png")}
-                            style={styles.drawerFotoVoltar}
-                        />
-                    </TouchableOpacity>
-                ),
-                headerTitleStyle: {
-                    fontWeight: "bold",
-                    fontSize: 20,
-                },
-            }} name="Configurações" component={ConfigScreen}
-            /> */}
+
+            {/* // <Drawer.Screen options={{
+            //     headerTitleAlign: "center",
+            //     headerLeft: () => (
+            //         <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+            //             <Image
+            //                 source={require("../Images/Voltar.png")}
+            //                 style={styles.drawerFotoVoltar}
+            //             />
+            //         </TouchableOpacity>
+            //     ),
+            //     headerTitleStyle: {
+            //         fontWeight: "bold",
+            //         fontSize: 20,
+            //     },
+            // }} name="Configurações" component={ConfigScreen}
+            // /> */}
 
 
             <Drawer.Screen
@@ -247,7 +247,7 @@ export function MyDrawer() {
                 options={{ drawerLabel: () => null }}
             />
 
-{/* 
+
             <Drawer.Screen options={{
                 headerTitleAlign: "center",
                 headerLeft: () => (
@@ -263,7 +263,7 @@ export function MyDrawer() {
                     fontSize: 20,
                 }, drawerLabel: () => null
             }} name="Atualizar Livros" component={AltLivro}
-            /> */}
+            />
 
 
             <Drawer.Screen options={{
@@ -284,13 +284,13 @@ export function MyDrawer() {
             />
 
 
-            {/* {user && (
+            {user && (
                 <Drawer.Screen
                     name="Sair (logout)"
                     component={LogOutScreen}
                 />
             )}
- */}
+
 
             {/* <Drawer.Screen options={{ drawerLabel: () => null }} name="ListMundo" component={listMundo} /> */}
 
@@ -326,7 +326,7 @@ export function MyDrawer() {
                     fontWeight: "bold",
                     fontSize: 20,
                 }, drawerLabel: () => null
-            }} name="Criação de Personagem" component={cadPersona}
+            }} name="Criação de Personagem" component={CadPersona}
             />
 
 
@@ -381,7 +381,7 @@ export function MyDrawer() {
                     fontWeight: "bold",
                     fontSize: 20,
                 }, drawerLabel: () => null
-            }} name="Criação de Capítulo" component={cadCapitulos}
+            }} name="Criação de Capítulo" component={CadCapitulos}
             />
 
 
@@ -399,7 +399,7 @@ export function MyDrawer() {
                     fontWeight: "bold",
                     fontSize: 20,
                 }, drawerLabel: () => null
-            }} name="Alterar capítulo" component={altCapitulos}
+            }} name="Alterar capítulo" component={AltCapitulos}
             />
 
 
@@ -417,11 +417,11 @@ export function MyDrawer() {
                     fontWeight: "bold",
                     fontSize: 20,
                 }, drawerLabel: () => null
-            }} name="Capítulos" component={listCapitulos}
+            }} name="Capítulos" component={ListCapitulos}
             />
 
 
-            {/* <Drawer.Screen options={{ drawerLabel: () => null, headerShown: false }} name="Cadastro" component={CadScreen} /> */}
+            <Drawer.Screen options={{ drawerLabel: () => null, headerShown: false }} name="Cadastro" component={CadScreen} />
 
             <Drawer.Screen options={{
                 headerTitleAlign: "center",
