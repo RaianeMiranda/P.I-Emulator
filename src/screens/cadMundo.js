@@ -69,8 +69,9 @@ export default function CadMundo({ route, navigation }) {
     }, [bookId, route.params.bookId]);
 
     return (
-        <SafeAreaProvider style={styles.containercriacaoper}>
-          
+        <ScrollView>
+            <SafeAreaProvider style={styles.containercriacaoper}>
+
                 <View style={{ flexBasis: "10%" }}>
                     <LinearGradient
                         // Background Linear Gradient 
@@ -164,7 +165,7 @@ export default function CadMundo({ route, navigation }) {
                             actions.insertOrderedList, actions.checkboxList, actions.insertLink]}
                             iconMap={{ [actions.heading1]: handleHead }}
                         />
-                        <ScrollView>
+                       
                             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }}>
                                 <RichEditor
                                     ref={richText}
@@ -174,12 +175,7 @@ export default function CadMundo({ route, navigation }) {
                                 />
                             </KeyboardAvoidingView>
 
-
-                        </ScrollView>
-
-
                     </SafeAreaView>
-
 
                 </View>
                 <View
@@ -217,7 +213,8 @@ export default function CadMundo({ route, navigation }) {
                         />
                     </View>
                 </View>
-          
-        </SafeAreaProvider >
+
+            </SafeAreaProvider >
+        </ScrollView>
     );
 }
