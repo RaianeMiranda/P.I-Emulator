@@ -8,12 +8,14 @@ import * as React from "react";
 import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore"
 import { auth, database } from "../config/firebase/firebase";
 import { useState, useEffect } from "react";
+import { ScrollView } from "react-native-gesture-handler";
 
 
-export default function listCapitulos({ route, navigation }) {
-    const [bookId, setBookId] = useState(route.params.bookId);
+export default function ListCapitulos({ route, navigation }) {
+    const [bookId, setBookId] = useState('');
     const [userId, setUserId] = useState('');
     const [capitulos, setCapitulos] = useState([]);
+
 
     useEffect(() => {
         const unsubscribe = onSnapshot(
@@ -43,92 +45,101 @@ export default function listCapitulos({ route, navigation }) {
             console.log("capítulo excluído com sucesso")
         })
     }
+    useEffect(() => {
+        if (route.params.bookId !== bookId) {
+            setBookId(route.params.bookId);
+        } // reset nomeMundo and descricao when bookId changes
 
+
+    }, [bookId, route.params.bookId]);
     return (
-        <SafeAreaProvider style={styles.containercriacaoper}>
+        <ScrollView>
+            <SafeAreaProvider style={styles.containercriacaoper}>
 
-            <View style={{ flexBasis: "10%" }}>
-                <View>
-                    <LinearGradient
-                        // Background Linear Gradient 
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 1, y: 0 }}
-                        colors={colors}
-                        locations={locations}
-                        style={{ height: 7, width: "100%" }}
-                    />
+                <View style={{ flexBasis: "10%" }}>
+                    <View>
+                        <LinearGradient
+                            // Background Linear Gradient 
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                            colors={colors}
+                            locations={locations}
+                            style={{ height: 7, width: "100%" }}
+                        />
+                    </View>
+                    <View>
+                        <Text>BOOKID: {bookId}</Text>
+                        <Text style={styles.capitulosparagraph}>Capítulos</Text>
+                    </View>
                 </View>
-                <View>
-                    <Text style={styles.capitulosparagraph}>Capítulos</Text>
-                </View>
-            </View>
-            <View style={
-                {
-                    // maxWidth: 300,
-                    flexBasis: "75%",
-                }
-            }
-            >
-                <View>
+                <View style={
                     {
-                        Array.isArray(capitulos) && capitulos.map((capitulos) => (
-                            <View key={capitulos.id}>
-                                <View style={styles.buttoncapitulos}>
-                                    <View style={styles.viewcapitulos}>
-                                        <View>
-                                            <Text style={styles.capitulosub}>
-                                                Capítulo:
-                                            </Text>
-                                            <TouchableOpacity onPress={() => navigation.navigate('Alterar capítulo', { bookId: bookId, userId: userId, capId: capitulos.id })}>
-                                                <Text style={{
-                                                    color: "black"
-                                                }}>
-                                                    {capitulos.nomeCapitulos}
+                        // maxWidth: 300,
+                        flexBasis: "75%",
+                    }
+                }
+                >
+                    <View>
+                        {
+                            Array.isArray(capitulos) && capitulos.map((capitulos) => (
+                                <View key={capitulos.id}>
+                                    <View style={styles.buttoncapitulos}>
+                                        <View style={styles.viewcapitulos}>
+                                            <View>
+                                                <Text style={styles.capitulosub}>
+                                                    Capítulo:
                                                 </Text>
-                                            </TouchableOpacity>
-                                        </View>
-                                        <View>
-                                            <TouchableOpacity onPress={() => handleExcluir(capitulos)}>
-                                                <Image style={styles.imagelixeira}
-                                                    source={require("../Images/lixeira.png")} />
-                                            </TouchableOpacity>
+                                                <TouchableOpacity onPress={() => navigation.navigate('Alterar capítulo', { bookId: bookId, userId: userId, capId: capitulos.id })}>
+                                                    <Text style={{
+                                                        color: "black"
+                                                    }}>
+                                                        {capitulos.nomeCapitulos}
+                                                    </Text>
+                                                </TouchableOpacity>
+                                            </View>
+                                            <View>
+                                                <TouchableOpacity onPress={() => handleExcluir(capitulos)}>
+                                                    <Image style={styles.imagelixeira}
+                                                        source={require("../Images/lixeira.png")} />
+                                                </TouchableOpacity>
+                                            </View>
                                         </View>
                                     </View>
                                 </View>
-                            </View>
 
-                        ))}
-                    <View style={{ marginTop: 10 }}>
-                    </View>
-                    <View>
-                        <TouchableOpacity style={styles.buttonadicionar} onPress={() => navigation.navigate('Criação de Capítulo', { bookId: bookId, userId: userId })}>
-                            <View style={styles.containerplustext}>
-                                <Icon name="plus" style={{ fontSize: 30, color: "black" }}
-                                />
-                                <Text style={{ color: "black" }}>Adicionar novo capítulo</Text>
+                            ))}
+                        <View style={{ marginTop: 10 }}>
+                        </View>
+                        <View>
+                            <TouchableOpacity style={styles.buttonadicionar} onPress={() => navigation.navigate('Criação de Capítulo', { bookId: bookId, userId: userId })}>
+                                <View style={styles.containerplustext}>
+                                    <Icon name="plus" style={{ fontSize: 30, color: "black" }}
+                                    />
+                                    <Text style={{ color: "black" }}>Adicionar novo capítulo</Text>
 
-                            </View>
-                        </TouchableOpacity>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
-            </View>
-            <View
-                style={{
-                    flexBasis: "10%"
-                }}
-            >
-                <View style={styles.containerBiblio}>
-                    <LinearGradient
-                        // Background Linear Gradient 
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 1, y: 0 }}
-                        colors={colors}
-                        locations={locations}
-                        style={{ height: 7, width: "100%", marginTop: 575 }}
-                    />
+                <View
+                    style={{
+                        flexBasis: "10%"
+                    }}
+                >
+                    <View style={styles.containerBiblio}>
+                        <LinearGradient
+                            // Background Linear Gradient 
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                            colors={colors}
+                            locations={locations}
+                            style={{ height: 7, width: "100%", marginTop: 575 }}
+                        />
+                    </View>
                 </View>
-            </View>
 
-        </SafeAreaProvider>
+            </SafeAreaProvider>
+        </ScrollView>
     );
 }
